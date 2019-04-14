@@ -32,7 +32,7 @@ With a calculation it is determend on what side of the no flight zone border my 
 This then activates a custom function to play a track and to activate my haptic feedback. ( Sometimes other clubmembers complain about my talking transmitter) ;)
 
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](toostbeek78@gmail.com)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UXFYW3U9L4WPW&source=url)
 
 
 
