@@ -31,6 +31,8 @@ Based on the variables that came with the loaded map I draw a line on the map to
 With a calculation it is determend on what side of the no flight zone border my plane is located. If it is on one side I change Global Variable GV8 to 1 and on the other side to 0. I use a logical switch to change state based on the GV8.
 This then activates a custom function to play a track and to activate my haptic feedback. ( Sometimes other clubmembers complain about my talking transmitter) ;)
 
+I have added the two audio Tracks. One is NoFlZo is the No FLight Zone Warning and the other is GPS Signal Found
+
 
 If you like this Widget, and would like to support me in my development
 then please donate....
