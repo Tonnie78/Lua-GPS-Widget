@@ -22,7 +22,6 @@ local options = {
 
 
 local function create(zone, options)
-  local plane = model.getInfo()
   local myZone  = { zone=zone, options=options, counter=0 }
   return myZone
 end
@@ -42,18 +41,19 @@ function refresh(myZone)
   
  --  ***************  prevent from run in wrong areas ***********************	
  
---  if myZone.zone.w  > 380 and myZone.zone.h > 165 then   		-- fullscreen
+    if myZone.zone.w  > 450 and myZone.zone.h > 265 then   		-- fullscreen
 --  if myZone.zone.w  > 180 and myZone.zone.h > 145  then 		-- halfscreen
 --  if myZone.zone.w  > 170 and myZone.zone.h > 65 then 		-- "quater"
-  if myZone.zone.w  > 150 and myZone.zone.h > 28 then 			-- all zones but not TopBar
+--  if myZone.zone.w  > 150 and myZone.zone.h > 28 then 			-- all zones but not TopBar
 --  if myZone.zone.w  > 65 and myZone.zone.h > 35 then 			-- TopBar
 	
   else
 		lcd.setColor(CUSTOM_COLOR, RED)
-		lcd.drawText(myZone.zone.x + 2, myZone.zone.y+2,"not here!",0)
+		lcd.drawText(myZone.zone.x + 2, myZone.zone.y+2,"select single window Widget no top bar",0)
   end
 
 gpsLatLong = getValue("GPS")
+if  (type(gpsLatLong) == "table") then 
 headingDeg= getValue("Hdg")  
 gpsLat = gpsLatLong["lat"]
 gpsLong = gpsLatLong["lon"]
@@ -190,6 +190,11 @@ else
       model.setGlobalVariable(8,0,1)
   
 end
-
+else 
+  bmp = Bitmap.open("/Widgets/Image1/map2.png")
+  lcd.drawBitmap(bmp, myZone.zone.x -10, myZone.zone.y -10)
+  lcd.setColor(CUSTOM_COLOR, lcd.RGB(255,0,0))
+  lcd.drawText( 100, 130, "No GPS SIGNAL !!! ", DBLSIZE + BLINK + CUSTOM_COLOR)
+  model.setGlobalVariable(8,0,0)
 end
 return { name="Map", options=options, create=create, update=update, background=background, refresh=refresh }
