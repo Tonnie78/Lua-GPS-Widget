@@ -57,6 +57,7 @@ if  (type(gpsLatLong) == "table") then
 headingDeg= getValue("Hdg")  
 gpsLat = gpsLatLong["lat"]
 gpsLong = gpsLatLong["lon"]
+model.setGlobalVariable(7,0,1)
 
 -- Part for loading the correct zoomlevel of the map
 
@@ -196,5 +197,6 @@ else
   lcd.setColor(CUSTOM_COLOR, lcd.RGB(255,0,0))
   lcd.drawText( 100, 130, "No GPS SIGNAL !!! ", DBLSIZE + BLINK + CUSTOM_COLOR)
   model.setGlobalVariable(8,0,0)
+  model.setGlobalVariable(7,0,0)
 end
 return { name="Map", options=options, create=create, update=update, background=background, refresh=refresh }
