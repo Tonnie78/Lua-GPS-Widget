@@ -23,7 +23,8 @@ local options = {
 
 local function create(zone, options)
   local myZone  = { zone=zone, options=options, counter=0 }
-  return myZone
+  local mapState = 1
+  return myZone, mapState
 end
 
 local function background()
@@ -90,6 +91,7 @@ local maplargeEast = 5.887011
             wy = 0
             zx = 479
             zy = 210
+	    local mapUpdate = 1
             bmp = Bitmap.open("/Widgets/Image1/map.png")
     elseif  gpsLat < mapmediumNorth and gpsLat > mapmediumSouth and gpsLong < mapmediumEast and gpsLong > mapmediumWest
     then    mapNorth = mapmediumNorth
@@ -100,6 +102,7 @@ local maplargeEast = 5.887011
             wy = 0
             zx = 443
             zy = 271
+	    local mapUpdate = 2
             bmp = Bitmap.open("/Widgets/Image1/map1.png")
     else    mapNorth = maplargeNorth
             mapSouth = maplargeSouth
@@ -109,6 +112,7 @@ local maplargeEast = 5.887011
             wy = 0
             zx = 410
             zy = 271
+	    local mapUpdate = 3
             bmp = Bitmap.open("/Widgets/Image1/map2.png")
 
 
@@ -136,16 +140,22 @@ end
 -- Part for Map position ends here
 
 
-lcd.drawBitmap(bmp, myZone.zone.x -10, myZone.zone.y -10)
+if not mapState == mapUpdate then
+  lcd.drawBitmap(bmp, myZone.zone.x -10, myZone.zone.y -10)
+  mapState = mapUpdate
+else
+end
 
 lcd.setColor(CUSTOM_COLOR, RED)
-lcd.drawText(40, 40, gpsLat, CUSTOM_COLOR)
-lcd.setColor(CUSTOM_COLOR, WHITE)
-lcd.drawText(40, 60, gpsLong , CUSTOM_COLOR)
-lcd.setColor(CUSTOM_COLOR, BLUE)
-lcd.drawText(40, 80, math.floor(headingDeg) , CUSTOM_COLOR)
-lcd.drawText(40, 100, x , CUSTOM_COLOR)
-lcd.drawText(40, 120, y , CUSTOM_COLOR)
+lcd.drawText(40, 40, GPSSpeed  .. " Km/h ", CUSTOM_COLOR)
+-- lcd.setColor(CUSTOM_COLOR, RED)
+-- lcd.drawText(40, 40, gpsLat, CUSTOM_COLOR)
+-- lcd.setColor(CUSTOM_COLOR, WHITE)
+-- lcd.drawText(40, 60, gpsLong , CUSTOM_COLOR)
+-- lcd.setColor(CUSTOM_COLOR, BLUE)
+-- lcd.drawText(40, 80, math.floor(headingDeg) , CUSTOM_COLOR)
+-- lcd.drawText(40, 100, x , CUSTOM_COLOR)
+-- lcd.drawText(40, 120, y , CUSTOM_COLOR)
 
   xvalues = { }
   yvalues = { }
