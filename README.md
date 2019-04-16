@@ -1,6 +1,8 @@
 # Lua-GPS-Widget
 Create a Horus Widget to show Plane location on a map that is placed on the screen as an image
 
+<iframe width="953" height="536" src="https://www.youtube.com/embed/kybwabBwatA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 First I created 3 images of aerial photos of my flying field. I created these images by taking snapshots from Google Earth at three different altidude levels / zoomlevels.
 These images have been resized to fit the Horus Screensize of 480 x 272
 
