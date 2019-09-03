@@ -15,7 +15,7 @@ Then i fill the parameters of the different maps.
 A if then else statement checks if the current location is within the coordinates of the smallest map (map). If so it loads this map. 
 If not then the second If statement checks the current location towards the second map (map1). If within the limits it opens. If not it opens map2.
 
-it also sets the coordinates beloning to the map to specific variables for later use to calculate screen position, end it loads the coordinates for the no flight zone in relation to the selected map.
+it also sets the coordinates belonging to the map to specific variables for later use to calculate screen position, and it loads the coordinates for the no flight zone in relation to the selected map.
 
 Then i calculate the position of the plane on the screen
 x = math.floor(480*((gpsLong - mapWest)/(mapEast - mapWest)))
@@ -30,7 +30,7 @@ I use x and y variables for the location and heading from GPS for the rotation o
 
 Based on the variables that came with the loaded map I draw a line on the map to represent my No Flight zone border.
 
-With a calculation it is determend on what side of the no flight zone border my plane is located. If it is on one side I change Global Variable GV8 to 1 and on the other side to 0. I use a logical switch to change state based on the GV8.
+With a calculation it is determined on what side of the no flight zone border my plane is located. If it is on one side I change Global Variable GV8 to 1 and on the other side to 0. I use a logical switch to change state based on the GV8.
 This then activates a custom function to play a track and to activate my haptic feedback. ( Sometimes other clubmembers complain about my talking transmitter) ;)
 
 I have added the two audio Tracks. One is NoFlZo is the No FLight Zone Warning and the other is GPS Signal Found
