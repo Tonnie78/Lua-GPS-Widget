@@ -95,6 +95,7 @@ local function background(thisWidget)
   thisWidget.headingDeg= getValue(thisWidget.ID.Hdg)  
   thisWidget.gpsLat = thisWidget.gpsLatLong.lat
   thisWidget.gpsLong = thisWidget.gpsLatLong.lon
+  thisWidget.GSpd = getValue(thisWidget.ID.GSpd)
   
 -- Part for loading the correct zoomlevel of the map
 
@@ -154,8 +155,8 @@ local function refresh(thisWidget)
 
   if  (type(thisWidget.gpsLatLong) ~= "table") then
     lcd.drawBitmap(thisWidget.map.bmp.large, thisWidget.zone.x -10, thisWidget.zone.y -10)
-    lcd.setColor(CUSTOM_COLOR, lcd.RGB(255,0,0))
-    lcd.drawText( 20, 130, "No GPS SIGNAL !!!", DBLSIZE, CUSTOM_COLOR)
+    lcd.setColor(CUSTOM_COLOR, RED)
+    lcd.drawText( 20, 130, "No GPS SIGNAL !!!", DBLSIZE + CUSTOM_COLOR)
     return
   end
 
@@ -197,14 +198,14 @@ local function refresh(thisWidget)
   lcd.drawBitmap(thisWidget.map.bmp[thisWidget.map.current], thisWidget.zone.x -10, thisWidget.zone.y -10)
 
 --draw info
-  lcd.setColor(CUSTOM_COLOR, RED)
-  lcd.drawText(40, 40, thisWidget.gpsLat, CUSTOM_COLOR)
   lcd.setColor(CUSTOM_COLOR, WHITE)
-  lcd.drawText(40, 60, thisWidget.gpsLong , CUSTOM_COLOR)
-  lcd.setColor(CUSTOM_COLOR, BLUE)
-  lcd.drawText(40, 80, math.floor(thisWidget.headingDeg) , CUSTOM_COLOR)
-  lcd.drawText(40, 100, thisWidget.x , CUSTOM_COLOR)
-  lcd.drawText(40, 120, thisWidget.y , CUSTOM_COLOR)
+  lcd.drawText(360, 20, math.floor(thisWidget.GSpd) .. "Km/h", DBLSIZE + CUSTOM_COLOR)
+--  lcd.setColor(CUSTOM_COLOR, WHITE)
+--  lcd.drawText(40, 60, thisWidget.gpsLong , CUSTOM_COLOR)
+--  lcd.setColor(CUSTOM_COLOR, BLUE)
+--  lcd.drawText(40, 80, math.floor(thisWidget.headingDeg) , CUSTOM_COLOR)
+--  lcd.drawText(40, 100, thisWidget.x , CUSTOM_COLOR)
+--  lcd.drawText(40, 120, thisWidget.y , CUSTOM_COLOR)
   
 --draw plane  
   lcd.setColor(CUSTOM_COLOR, lcd.RGB(255,255,255))
