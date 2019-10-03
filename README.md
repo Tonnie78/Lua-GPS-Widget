@@ -12,17 +12,17 @@ When to script starts, it first loads the GPS location with getValue("GPS") and 
 
 Then i fill the parameters of the different maps.
 
-A if then else statement checks if the current location is within the coordinates of the smallest map (map). If so it loads this map. 
+An if then else statement checks if the current location is within the coordinates of the smallest map (map). If so it loads this map. 
 If not then the second If statement checks the current location towards the second map (map1). If within the limits it opens. If not it opens map2.
 
-it also sets the coordinates belonging to the map to specific variables for later use to calculate screen position, and it loads the coordinates for the no flight zone in relation to the selected map.
+It also sets the coordinates belonging to the map to specific variables for later use to calculate screen position, and it loads the coordinates for the no flight zone in relation to the selected map.
 
 Then i calculate the position of the plane on the screen
 x = math.floor(480*((gpsLong - mapWest)/(mapEast - mapWest)))
 y = math.floor(272*((mapNorth - gpsLat)/(mapNorth - mapSouth)))
 
 As the max distance in this calculation is 1,7 km i do not take any unliniarity of the coordinate system into account.
-i know the longitude is not exactly a straight line but as said on this scale it's no problem.
+I know the longitude is not exactly a straight line but as said on this scale it's no problem.
 
 Then I draw a pointer in the shape of a plane on the map.
 
